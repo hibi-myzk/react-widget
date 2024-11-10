@@ -4,9 +4,32 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @media (prefers-color-scheme: light) {
+    color-scheme: light;
+  }
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+@media print {
+  @page {
+    margin: 0.5cm;
+  }
+
+  body {
+    background: white;
+  }
+
+  .border-gray-200 {
+    border-color: white;
+  }
+
+  /* Hide everything except the widgets container */
+  .p-4 > *:not(:last-child) {
+    display: none;
+  }
+
+  /* Remove background colors and adjust borders for better printing */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }
